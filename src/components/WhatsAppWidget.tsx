@@ -19,7 +19,8 @@ export default function WhatsAppWidget() {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     const onPointer = (e: PointerEvent) => {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
+      if (rootRef.current && !rootRef.current.contains(e.target as Node))
+        setOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onPointer);
@@ -38,7 +39,13 @@ export default function WhatsAppWidget() {
 
   return (
     <div className={`wa ${open ? "open" : ""}`} ref={rootRef}>
-      <div className="wa-panel" id={panelId} role="dialog" aria-label={contact.title} aria-hidden={!open}>
+      <div
+        className="wa-panel"
+        id={panelId}
+        role="dialog"
+        aria-label={contact.title}
+        aria-hidden={!open}
+      >
         <div className="wa-head">
           <ThemedImg name="mark" alt="" className="wa-logo" />
           <div>
@@ -48,8 +55,23 @@ export default function WhatsAppWidget() {
               {contact.status}
             </span>
           </div>
-          <button type="button" className="wa-close" aria-label="Close chat" onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+          <button
+            type="button"
+            className="wa-close"
+            aria-label="Close chat"
+            onClick={() => setOpen(false)}
+            tabIndex={open ? 0 : -1}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
               <path d="M6 6l12 12M18 6L6 18" />
             </svg>
           </button>
@@ -102,16 +124,33 @@ export default function WhatsAppWidget() {
         </div>
       </div>
 
+      {!seen && (
+        <>
+          <span className="wa-ring" aria-hidden="true" />
+          <span className="wa-ring" aria-hidden="true" />
+        </>
+      )}
+
       <button
         type="button"
-        className={`wa-fab ${seen ? "" : "attention"}`}
+        className="wa-fab"
         onClick={toggle}
         aria-label={open ? "Close WhatsApp chat" : "Chat with us on WhatsApp"}
         aria-expanded={open}
         aria-controls={panelId}
       >
         <WhatsAppIcon className="wa-ico wa-ico-chat" size={30} />
-        <svg className="wa-ico wa-ico-x" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+        <svg
+          className="wa-ico wa-ico-x"
+          viewBox="0 0 24 24"
+          width="26"
+          height="26"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
           <path d="M6 6l12 12M18 6L6 18" />
         </svg>
         {!seen && <span className="wa-dot" aria-hidden="true" />}
