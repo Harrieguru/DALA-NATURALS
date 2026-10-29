@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#efe8da"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#14170d"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="description"
+      content="Dala Naturals is a Kenyan-owned brand of pure honey and sunflower oil. Rooted in our land. Made for generations."
+    />
+    <link rel="icon" type="image/png" href="./images/mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>DALA NATURALS</title>
+    <!-- Dala Naturals- Rooted in Our Land. Made for Generations. -->
+    <!-- Set the theme before first paint so there is no light/dark flash. -->
+    <script>
+      (function () {
+        var theme = "light";
+        try {
+          theme = localStorage.getItem("dala-theme");
+        } catch (e) {}
+        if (theme !== "light" && theme !== "dark") {
+          theme =
+            window.matchMedia &&
+            matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        }
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <noscript
+      ><style>
+        .reveal,
+        .hero-rise,
+        .hero-logo {
+          opacity: 1 !important;
+          transform: none !important;
+          animation: none !important;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
